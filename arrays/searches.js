@@ -3,10 +3,11 @@
 Basic Idea: 
 => split array in half and compare the middle number to the number you are trying to find
 => if the number we are searching for is larger than the middle number
-=> take the upper half of the split array and split it in half again 
+=> take left pointer and set it to the middle +1
 => and again compare the middle number to the number we are searching for
+=> if the secret number is smaller, take the right pointer and set it to middle -1
 => continue until ....the number is found or not found (-1)
-=> run while there are still numbers to go thru in the array
+=> run as long as the left pointer and right pointer do not meet on same index or cross
 Edge Cases:
 => what if there are duplicate numbers?
 */
@@ -15,30 +16,26 @@ var secretNum = 34;
 var input = [2,4,6,7,9,11,22,34,35,36,37,48,67];
 
 function findSecretNum(input, secretNum){
-  var lowHalf = 0; //position in array
-  var highHalf = input.length -1 ;  //position in array
-  var middle = input[Math.floor(lowHalf + highHalf / 2)];
-
-  console.log("highHalf: ", highHalf);
-  console.log("middle: ", middle);
-
+  var lowPointer = 0; 
+  var highPointer = input.length - 1 ;
+  var middle;
+ 
+  while(lowPointer <= highPointer){
+    middle = Math.floor((lowPointer + highPointer) / 2)
+    
+    if(input[middle] === secretNum) {
+      return middle;
+    
+    } else if (input[middle] < secretNum){
+      lowPointer = middle + 1;
+   
+    } else {
+      highPointer = middle - 1;
+    }
   
-  if(pointer === secretNum) {
-    return pointer;
+    
   }
-  // while(pointer !== secretNum ){
-  //   if(pointer === secretNum) {
-  //     return pointer;
-  //   }
-  //   else if(pointer > secretNum){
-  //     console.log("pointer is bigger");
-  //     middle = Math.floor(lowHalf/2);
-  //   } else if (pointer < secretNum) {
-  //     console.log("pointer is smaller");
-  //     middle = Math.floor(highHalf/2);
-  //   } 
-  // }
-
+  return -1;
 }
 
 findSecretNum(input, secretNum)
