@@ -14,4 +14,45 @@ var Node = function(value){
 var a = new Node('a');
 var b = a.next = new Node('b');
 var c = b.next = new Node('c');
-console.log(a);
+// console.log(a);
+
+/* How to implement a linked list with functions */
+
+function LinkedList (){
+  var Node = function(element){
+    this.element = element;
+    this.next = null;
+  };
+  var length = 0;
+  var head = null;
+
+  //append at the end of the list
+  this.append = function(element){
+    var node = new Node(element);
+    var current;
+    if(head === null){
+      head = node; 
+    } else {
+      current = head;
+      
+      while(current.next){
+        current = current.next;
+    }
+    current.next = node
+    }
+    length++;
+  };
+
+  this.insert = function(position, element){};
+  this.removeAt = function(position, element){};
+  this.remove = function(element){};
+  this.indexOf = function(element){};
+  this.isEmpty = function(){};
+  this.size = function(){};
+  this.toString = function(){};
+  this.print = function(){};
+};
+
+var list = new LinkedList();
+list.append(10);
+list.append(15);
