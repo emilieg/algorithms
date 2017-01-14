@@ -53,7 +53,6 @@ function LinkedList (){
       current = head
       if(position === 0){
           head = current.next;
-          console.log(head);
         } else {
           while(count !== position){
             previous = current
