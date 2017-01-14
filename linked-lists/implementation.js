@@ -44,7 +44,32 @@ function LinkedList (){
   };
 
   this.insert = function(position, element){};
-  this.removeAt = function(position, element){};
+  this.removeAt = function(position){
+    var current;
+    var count = 0;
+    var previous;
+    
+    if(position > -1 && position < length){
+      current = head
+      if(position === 0){
+          head = current.next;
+          console.log(head);
+        } else {
+          while(count !== position){
+            previous = current
+            current = current.next;
+            count ++;
+          }
+        previous.next = current.next;
+        length--;
+        // console.log(current.element);
+        console.log(head);
+        return current.element;
+      }
+    } else {
+      return null;
+    }    
+  };
   this.remove = function(element){};
   this.indexOf = function(element){};
   this.isEmpty = function(){};
@@ -56,3 +81,8 @@ function LinkedList (){
 var list = new LinkedList();
 list.append(10);
 list.append(15);
+list.append(9);
+list.append(3);
+list.append(5);
+
+list.removeAt(1);
