@@ -83,5 +83,5 @@ list.append(15);
 list.append(9);
 list.append(3);
 list.append(5);
-
-list.removeAt(1);
+console.log(list);
+// list.removeAt(1);
